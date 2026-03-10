@@ -1,0 +1,19 @@
+# Serviços para desenvolvimento local
+# Uso: na pasta backend, execute: docker compose up -d
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tripper-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tripper
+      POSTGRES_PASSWORD: tripper_dev
+      POSTGRES_DB: tripper
+    ports:
+      - "5432:5432"
+    volumes:
+      - tripper_pgdata:/var/lib/postgresql/data
+
+volumes:
+  tripper_pgdata:
